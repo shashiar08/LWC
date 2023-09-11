@@ -15,10 +15,10 @@ export default class CheckShipmentStatus extends LightningElement {
 			this.status = result;
 		})
 		.catch(error => {
-			this.error = error;
+
 			const event = new ShowToastEvent({
                 title: 'Error',
-                message: 'An error occured while fetching shipment status. Please try again',
+                message: error.body && error.body.message ? error.body.message : 'There is an error while getting status. Please reload the page',
                 variant: 'error',
                 mode: 'dismissible'
             });
